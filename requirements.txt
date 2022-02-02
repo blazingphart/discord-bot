@@ -6,3 +6,4 @@ discord.py==1.7.3
 multidict==6.0.2
 typing-extensions==4.0.1
 yarl==1.7.2
+pymongo==4.0.1
