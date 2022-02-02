@@ -1,11 +1,9 @@
-from lib2to3.pgen2 import token
 import discord
 import os
 from discord.ext import commands
 import pymongo
 from dotenv import load_dotenv
 
-from database import MONGO_CLIENT
 
 
 load_dotenv()
