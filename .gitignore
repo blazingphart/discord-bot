@@ -1,0 +1,5 @@
+.env
+database.py
+final_team_score.json
+players.json
+quals_pool.json
