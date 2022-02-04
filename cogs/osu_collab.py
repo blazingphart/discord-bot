@@ -47,7 +47,7 @@ class osu_collab(commands.Cog):
         os.chdir("../")
 
         f = open(".gitignore", "a")
-        f.write("{}/".format(newpath))
+        f.write("\n{}/".format(newpath))
         f.close()
 
 
