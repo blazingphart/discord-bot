@@ -2,7 +2,8 @@ import discord
 from discord.ext import commands
 from urllib.request import Request, urlopen
 from PIL import Image
-
+import datetime
+import os
 
 class osu_collab(commands.Cog):
     def __init__(self, bot):
@@ -10,10 +11,17 @@ class osu_collab(commands.Cog):
 
     @commands.command()
     async def makecollab(self, ctx, link, row, col):
+        row = int(row)
+        col = int(col)
         filename = str(link.split('/')[-1])
         req = Request(link, headers={'User-Agent': 'Mozilla/5.0'})
         response = urlopen(req)
         image = response.read()
+
+        newpath = "{}{}{}{}{}{}{}_collab".format(filename[:-4], datetime.datetime.now().day, datetime.datetime.now().month, datetime.datetime.now().year, datetime.datetime.now().hour, datetime.datetime.now().minute, datetime.datetime.now().second)
+        if not os.path.exists(newpath):
+            os.makedirs(newpath)
+        os.chdir(newpath)
 
         with open(filename, "wb") as f:
             f.write(image)
@@ -34,8 +42,16 @@ class osu_collab(commands.Cog):
                     bottom = height
                 
                 img_part = img.crop((left, top, right, bottom))
-                # img_part.save(fp="{}{}.png".format(filename[:-3], col_num+(row_num-1)*col), format="PNG")
-                await ctx.send(file=img_part)
+                img_name = "{}{}.png".format(filename[:-4], col_num+(row_num-1)*col)
+                img_part.save(fp=img_name, format="PNG")
+                await ctx.send(file=discord.File("{}".format(img_name)))
+        
+        os.chdir("../")
+
+        f = open(".gitignore", "a")
+        f.write("{}/".format(newpath))
+        f.close()
+
 
 
 def setup(bot):
