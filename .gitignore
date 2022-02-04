@@ -5,3 +5,4 @@ players.json
 quals_pool.json
 __pycache__/
 cogs/__pycache__/
+.gitignore
