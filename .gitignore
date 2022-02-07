@@ -1,0 +1,4 @@
+.env
+tayuno/test.py
+__pycache__/
+cogs/__pycache__/
