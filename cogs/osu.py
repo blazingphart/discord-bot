@@ -3,6 +3,7 @@ import os
 from discord.ext import commands
 import pymongo
 from dotenv import load_dotenv
+import json
 
 class osu(commands.Cog):
 
@@ -10,8 +11,16 @@ class osu(commands.Cog):
         self.bot = bot
 
     # @commands.command()
-    # @commands.has_role("tayuno's")
-    # async def stats(self, ctx, round, )
+    # async def match(self, ctx, round, mp_link):
+    #     os.chdir("../")
+    #     os.chdir("tayuno")
+    #     pool = {}
+    #     with open('pool.json', 'r') as f:
+    #         pool = json.load(f)
+    #     f.close()
+    #     pool = pool[round]
+
+
 
 def setup(bot):
     load_dotenv()
